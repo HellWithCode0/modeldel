@@ -2,7 +2,7 @@
 
 This repository develops the mathematics behind the research proposal *“Arithmetic Dynamical Tomography: Reconstructing Integers from Polynomial Orbit Data”*. The proposal asks whether the prime factorisation of $n$ can be recovered from periodic-point counts of a few quadratic maps $x\mapsto x^2+c$ on $\mathbb Z/n\mathbb Z$.
 
-**Main document: [`paper/ADT_foundations.md`](paper/ADT_foundations.md).** It contains full statements and proofs, heuristics, conjectures and tables. Every statement is labelled Theorem, Heuristic, Observation or Conjecture.
+**Main document: [`paper/ADT_foundations.md`](paper/ADT_foundations.md).** A typeset version is [`paper/ADT_foundations.pdf`](paper/ADT_foundations.pdf) (20 pages, A4). It contains full statements and proofs, heuristics, conjectures and tables. Every statement is labelled Theorem, Heuristic, Observation or Conjecture.
 
 ## Headline results
 
@@ -19,7 +19,9 @@ This repository develops the mathematics behind the research proposal *“Arithm
 ## Layout
 
 ```
-paper/ADT_foundations.md   the theory paper
+paper/ADT_foundations.md   the theory paper (source)
+paper/ADT_foundations.pdf  the typeset manuscript
+paper/pdf/                 PDF build script and print stylesheet
 figures/                   figures used in the paper (made by code/make_figures.py)
 results/                   saved outputs of every experiment
 code/cycles.c              C tool: cycle structure of x^2+c on Z/n (linear time per modulus)
@@ -43,6 +45,14 @@ python3 symbolic_identities.py   # Proposition 3.3 (a few minutes)
 ```
 
 Data goes to `build/` by default; set `ADT_SCRATCH` to use another directory.
+
+The PDF is built from the Markdown source. Mathematics is rendered with KaTeX and the page is printed by Playwright’s Chromium:
+
+```sh
+cd paper/pdf && npm install && node build_pdf.mjs   # writes paper/ADT_foundations.pdf
+```
+
+If Playwright’s browser is not installed, set `CHROMIUM_PATH` to a Chromium executable.
 
 | script | paper | output in `results/` |
 |---|---|---|

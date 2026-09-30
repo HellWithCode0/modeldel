@@ -2,11 +2,28 @@
 
 *A theoretical companion to the research proposal “Arithmetic Dynamical Tomography: Reconstructing Integers from Polynomial Orbit Data”.*
 
-> **How to read this document.** Each statement carries a status label.
-> **Theorem / Proposition / Lemma**: proved here, sometimes using a cited standard result.
-> **Heuristic**: derived from an explicit probabilistic model; not a proof.
-> **Observation**: a finite computation, reproducible with the code in [`code/`](../code) (see [`README.md`](../README.md)).
-> **Conjecture**: a precise statement we believe, with the evidence stated.
+**Abstract.** The proposal asks whether the prime factorisation of an integer $n$ can be recovered from periodic-point counts of quadratic maps $x\mapsto x^2+c$ on $\mathbb Z/n\mathbb Z$. We develop the foundations of this inverse problem.
+
+The full-depth fingerprint is an element of the Burnside ring of $\widehat{\mathbb Z}$, equivalently of the big Witt ring. The Chinese remainder theorem makes it multiplicative into a semiring that is neither cancellative nor factorial. We prove four structural facts:
+
+* collisions always occur in infinite families;
+* the fingerprint depends only on the coordinate marginals of the multiset of prime types, so reconstruction is a discrete-tomography problem whose obstruction is the switching component;
+* at bounded depth the fingerprint depends only on Frobenius classes in a finite Galois group;
+* prime powers are invisible below an explicit multiplier-order threshold.
+
+For the exactly solvable probes $c=0,-2$ we give closed forms, prove that together they separate all primes, and exhibit the collision $65\sim119$. A Poisson–Chebotarev model, grounded in the Galois theory of dynatomic polynomials, predicts that the depth $K$ and the number of probes $|C|$ must satisfy $|C|\log K\approx\log X$. This refutes polylogarithmic depth heuristically. All predictions are tested numerically. For the proposal’s probe set $\{-3,\dots,3\}$ we find no collision among the odd squarefree integers $n\le10^6$.
+
+**Keywords.** Arithmetic dynamics; functional graphs; periodic points; dynatomic polynomials; Burnside ring; Witt vectors; Chebotarev density theorem; discrete tomography; integer factorisation.
+
+**MSC 2020.** 37P05, 37P25, 11R45, 11Y05, 19A22.
+
+> **How to read this document.** Each statement carries a status label:
+>
+> * **Theorem / Proposition / Lemma**: proved here, sometimes using a cited standard result.
+> * **Heuristic**: derived from an explicit probabilistic model; not a proof.
+> * **Observation**: a finite computation, reproducible with the code in [`code/`](../code) (see [`README.md`](../README.md)).
+> * **Conjecture**: a precise statement we believe, with the evidence stated.
+>
 > The proposal itself warns that functional graphs, arithmetic dynamics and dynamical zeta functions have large literatures; the same caution applies here (§11).
 
 ---
@@ -17,7 +34,7 @@
 1. [Setting and notation](#1-setting-and-notation)
 2. [The Burnside–Witt formalism](#2-the-burnsidewitt-formalism)
 3. [Local theory at a prime](#3-local-theory-at-a-prime)
-4. [The two exactly solvable probes](#4-the-two-exactly-solvable-probes-c--0-and-c---2)
+4. [The two exactly solvable probes](#4-the-two-exactly-solvable-probes)
 5. [Global structure: collisions and discrete tomography](#5-global-structure-collisions-and-discrete-tomography)
 6. [Obstructions at bounded depth](#6-obstructions-at-bounded-depth)
 7. [Prime powers](#7-prime-powers)
@@ -76,7 +93,7 @@ Throughout, $c\in\mathbb Z$, $f_c(x)=x^2+c$, and $n$ is an odd squarefree intege
 
 ## 2. The Burnside–Witt formalism
 
-### 2.1 Finite $\mathbb Z$-sets and marks
+### 2.1 Finite ℤ-sets and marks
 
 Let $\Omega^+$ be the set of isomorphism classes of finite $\mathbb Z$-sets. It is a commutative semiring under disjoint union and cartesian product, and its group completion $\Omega$ is the Burnside ring of finite $\mathbb Z$-sets. Every finite $\mathbb Z$-set is a disjoint union of cycles, so $\Omega$ is free abelian on the transitive classes $[\mathbb Z/d]$ ($d\ge1$), with $[1]=[\mathbb Z/1]$ the unit.
 
@@ -90,7 +107,7 @@ For $k\ge1$ the **mark** $\varphi_k(X)=|\{x\in X:\sigma^k x=x\}|$ is additive an
 
 *Proof.* The inversion formula for $d$ involves only divisors of $d$. ∎
 
-### 2.2 The periodic $\mathbb Z$-set and CRT
+### 2.2 The periodic ℤ-set and CRT
 
 Every solution of $f_c^{\circ k}(x)=x$ is periodic, so $P_c(n,k)=\varphi_k(\mathrm{Per}_c(n))$.
 
@@ -135,7 +152,7 @@ The “Euler product over cycles” expresses $Z_{c,n}$ in Witt (necklace) coord
 
 These two failures are the algebraic sources of all collisions (§5).
 
-### 2.5 Beyond periodic data: the unlabeled graph always determines $n$
+### 2.5 Beyond periodic data: the unlabeled graph always determines *n*
 
 **Theorem 2.7 (indegree reconstruction).** Let $n=p_1\cdots p_r$ be odd squarefree, $c\in\mathbb Z$, and $I_j=\#\{y\in\mathbb Z/n:\ \mathrm{indeg}_{G_c(n)}(y)=2^j\}$. Then
 
@@ -248,9 +265,9 @@ For generic $c$ the mean of $N_c(p)/\sqrt p$ over $10^4<p<10^5$ lies in $[1.238,
 
 ---
 
-## 4. The two exactly solvable probes: $c=0$ and $c=-2$
+## 4. The two exactly solvable probes
 
-For odd $m$ let $D(m)$ be the $\mathbb Z$-set $(\mathbb Z/m,\ a\mapsto2a)$ and $E(m)$ its quotient by $a\sim-a$. Write $o_d=\mathrm{ord}_d(2)$ and $o'_d$ for the order of $2$ in $(\mathbb Z/d)^\times/\{\pm1\}$. Decomposing by the order of $a$ gives
+This section treats $c=0$ and $c=-2$. For odd $m$ let $D(m)$ be the $\mathbb Z$-set $(\mathbb Z/m,\ a\mapsto2a)$ and $E(m)$ its quotient by $a\sim-a$. Write $o_d=\mathrm{ord}_d(2)$ and $o'_d$ for the order of $2$ in $(\mathbb Z/d)^\times/\{\pm1\}$. Decomposing by the order of $a$ gives
 
 $$
 D(m)=\sum_{d\mid m}\frac{\varphi(d)}{o_d}[\mathbb Z/o_d],\qquad

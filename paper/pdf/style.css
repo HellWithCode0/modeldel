@@ -1,0 +1,99 @@
+/* Print stylesheet for the manuscript PDF. Body text is set in KaTeX_Main
+   (a Computer Modern face) so text and mathematics match. */
+@page { size: A4; }
+
+html { font-size: 10.5pt; }
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #141414;
+  font-family: "KaTeX_Main", "DejaVu Serif", serif;
+  line-height: 1.4;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 18.5pt;
+  line-height: 1.22;
+  text-align: center;
+  margin: 4mm 6% 3mm;
+}
+h1 + p { text-align: center; font-size: 10pt; margin: 0 8% 2mm; }
+.dateline { text-align: center; font-size: 9.2pt; color: #555; margin: 0 0 6mm; }
+
+.abstract {
+  margin: 0 7% 5mm;
+  font-size: 9.6pt;
+  line-height: 1.38;
+}
+.abstract ul { margin: 1pt 0 5pt; }
+.abstract p:first-child { margin-top: 0; }
+
+h2 {
+  font-size: 13.2pt;
+  margin: 7mm 0 2.2mm;
+  break-after: avoid;
+  text-align: left;
+}
+h3 {
+  font-size: 11.2pt;
+  margin: 4.5mm 0 1.6mm;
+  break-after: avoid;
+  text-align: left;
+}
+p { margin: 0 0 5.5pt; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 6pt; padding-left: 17pt; }
+li { margin: 1.5pt 0; }
+li > p { margin: 0 0 3pt; }
+strong { font-weight: bold; }
+
+blockquote {
+  margin: 4mm 0 5mm;
+  padding: 2.5mm 4mm;
+  background: #f3f3f0;
+  border-left: 1.6pt solid #8a8a86;
+  font-size: 9.5pt;
+  break-inside: avoid;
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5mm 0 4mm;
+  font-size: 8.7pt;
+  line-height: 1.32;
+  text-align: left;
+}
+thead th {
+  text-align: left;
+  font-weight: bold;
+  padding: 2.4pt 4pt;
+  border-top: 1pt solid #111;
+  border-bottom: 0.6pt solid #111;
+}
+td { padding: 2.2pt 4pt; vertical-align: top; border-bottom: 0.3pt solid #d4d4d0; }
+tbody tr:last-child td { border-bottom: 1pt solid #111; }
+tr { break-inside: avoid; }
+
+img.fig { display: block; width: 78%; margin: 3mm auto 1mm; }
+
+code {
+  font-family: "DejaVu Sans Mono", monospace;
+  font-size: 0.84em;
+  background: #f1f1ee;
+  padding: 0 1.5pt;
+  border-radius: 1.5pt;
+}
+
+a { color: #1b3f7a; text-decoration: none; }
+hr { display: none; }
+
+.katex { font-size: 1em; }
+.katex-display { margin: 2.2mm 0 2.6mm; }
+
+/* references: no bullets, hanging indent */
+#sec-11 ~ ul { list-style: none; padding-left: 0; }
+#sec-11 ~ ul > li { padding-left: 2.4em; text-indent: -2.4em; text-align: left; }
